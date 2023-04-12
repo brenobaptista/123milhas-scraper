@@ -24,7 +24,7 @@ const buildUrl = (from: string, to: string, date: string, adults: number) => {
   return url
 }
 
-export const scrape = async (
+const scrape = async (
   from: string,
   to: string,
   date: string,
@@ -51,7 +51,7 @@ export const scrape = async (
         el.nextElementSibling.nextElementSibling.textContent.trim()
       )
 
-      console.log('Flight for date', date)
+      console.log(date)
       console.log(price)
       console.log(time, '\n')
 
@@ -64,5 +64,16 @@ export const scrape = async (
     await browser.close()
   } catch (error) {
     console.error(error)
+  }
+}
+
+export const getDeals = async (
+  from: string,
+  to: string,
+  dates: string[],
+  adults: number
+) => {
+  for (const date of dates) {
+    await scrape(from, to, date, adults)
   }
 }
