@@ -28,7 +28,8 @@ const scrape = async (
   from: string,
   to: string,
   date: string,
-  adults: number
+  adults: number,
+  type: string
 ) => {
   try {
     const url = buildUrl(from, to, date, adults)
@@ -51,13 +52,13 @@ const scrape = async (
         el.nextElementSibling.nextElementSibling.textContent.trim()
       )
 
-      console.log(date)
+      console.log(type, date)
       console.log(price)
       console.log(time, '\n')
 
       await fs.appendFile(
         './output.txt',
-        date + '\n' + price + '\n' + time + '\n\n'
+        type + ' ' + date + '\n' + price + '\n' + time + '\n\n'
       )
     }
 
@@ -67,13 +68,19 @@ const scrape = async (
   }
 }
 
+export const dateTypes = {
+  DEPART: 'ida',
+  RETURN: 'volta'
+}
+
 export const getDeals = async (
   from: string,
   to: string,
   dates: string[],
-  adults: number
+  adults: number,
+  type: string
 ) => {
   for (const date of dates) {
-    await scrape(from, to, date, adults)
+    await scrape(from, to, date, adults, type)
   }
 }
