@@ -29,7 +29,7 @@ const scrape = async (
   to: string,
   date: string,
   adults: number,
-  type: string
+  type: DateTypes
 ) => {
   try {
     const url = buildUrl(from, to, date, adults)
@@ -68,19 +68,19 @@ const scrape = async (
   }
 }
 
-export const dateTypes = {
-  DEPART: 'ida',
-  RETURN: 'volta'
-}
-
 export const getDeals = async (
   from: string,
   to: string,
   dates: string[],
   adults: number,
-  type: string
+  type: DateTypes
 ) => {
   for (const date of dates) {
     await scrape(from, to, date, adults, type)
   }
+}
+
+export enum DateTypes {
+  DEPART = 'ida',
+  RETURN = 'volta'
 }

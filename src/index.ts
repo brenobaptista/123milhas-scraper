@@ -1,4 +1,4 @@
-import { dateTypes, getDeals } from './scraper'
+import { getDeals, DateTypes } from './scraper'
 
 const from = 'FOR'
 const to = 'CWB'
@@ -19,5 +19,5 @@ const returnDates = [
   '31-05-2023'
 ]
 
-getDeals(from, to, departDates, adults, dateTypes.DEPART)
-getDeals(to, from, returnDates, adults, dateTypes.RETURN)
+getDeals(from, to, departDates, adults, DateTypes.DEPART)
+getDeals(to, from, returnDates, adults, DateTypes.RETURN)
