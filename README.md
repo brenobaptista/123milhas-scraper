@@ -6,6 +6,8 @@
 
 The scraper will create a `output.txt` file with the deals found. This is useful because unlike other websites, 123milhas doesn't show you the price for each day in the calendar automatically. If they add this feature in the future, this script will become obsolete.
 
+**Notice that sometimes the website will trigger an error saying that no flights were found. If you get this error, just close the browser manually so the script can continue. When finished, collect those dates that you got the error and run the script again.**
+
 ### Essencial scripts
 
 ```sh
